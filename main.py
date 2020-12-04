@@ -42,13 +42,10 @@ y = np.array(df_train['Survived'])
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
 ids = df_test['PassengerId']
 
-knn = KNeighborsClassifier(n_neighbors = 1)
+knn = KNeighborsClassifier(n_neighbors = 3)
 knn.fit(x_train, y_train)
-Y_pred = knn.predict(x_test)
 
-print('Precisión Vecinos más Cercanos:')
-print(knn.score(x_train, y_train))
+print(f'confianza = {knn.score(x_train, y_train)}')
 prediccion_knn = knn.predict(df_test.drop('PassengerId', axis=1))
 out_knn = pd.DataFrame({ 'PassengerId' : ids, 'Survived': prediccion_knn })
-print('Predicción Vecinos más Cercanos:')
 print(out_knn.head(100))
