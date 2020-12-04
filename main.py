@@ -6,14 +6,6 @@ from sklearn.neighbors import KNeighborsClassifier
 df_test  = pd.read_csv("test.csv")
 df_train = pd.read_csv("train.csv")
 
-def log_inf():
-    print(df_test.shape)
-    print(df_train.shape)
-    print(pd.isnull(df_test).sum())
-    print(pd.isnull(df_train).sum())
-    print(df_test.describe())
-    print(df_train.describe())
-
 df_train['Sex'].replace(['female','male'], [0,1], inplace=True)
 df_test['Sex'].replace(['female','male'], [0,1], inplace=True)
 df_train['Embarked'].replace(['Q','S', 'C'], [0,1,2], inplace=True)
